@@ -1,0 +1,7 @@
+*.pem
+*.swp
+index.txt*
+newcerts
+*.old
+crlnumber
+serial

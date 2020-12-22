@@ -13,9 +13,9 @@ $ make clean init root-ca.crt
 ## Create server certificate
 ```bash
 $ cd server
-$ make init server.csr
+$ make clean init server.csr
 $ cd ../rootCa
-$ make ../server.crt
+$ make ../server/server.crt
 ```
 
 ## Run httpd using server certificate
@@ -29,7 +29,7 @@ echo -n "<PASSPHRASE>"
 
 Now we can run httpd on docker container.
 ```bash
-$ docker-compose up -d
+$ docker-compose up -d --build
 ```
 
 ## Send https request to httpd

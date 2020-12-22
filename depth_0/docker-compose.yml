@@ -2,6 +2,7 @@ version: "3.7"
 services:
   httpd:
     container_name: "httpd"
+    hostname: "origin.dev.local"
     build: .
     ports:
       - "80:80"

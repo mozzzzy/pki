@@ -9,13 +9,14 @@ ROOT_CA_CRL=root-ca.crl
 ROOT_OCSP_KEY=private/root-ocsp.key
 ROOT_OCSP_CSR=root-ocsp.csr
 ROOT_OCSP_CRT=root-ocsp.crt
-SERVER_CSR:=../server/server.csr
-SERVER_CRT:=../server/server.crt
+SERVER_CSR=../server/server.csr
+SERVER_CRT=../server/server.crt
 
 .PHONY: help
 help:
 	@echo "Usage:"
 	@echo "  Initialize directories                : make init"
+	@echo "  Remove all directories and files      : make clean"
 	@echo "  -------- For building Root CA --------"
 	@echo "  Create private key for root ca        : make $(ROOT_CA_KEY)"
 	@echo "  Create csr for root ca                : make $(ROOT_CA_CSR)"
@@ -32,7 +33,6 @@ help:
 	@echo "  Check certificate for ocsp responder  : make check_root_ocsp_crt"
 	@echo "  ------------ For CA Tasks ------------"
 	@echo "  Create certificate for server         : make $(SERVER_CRT)"
-	@echo "  Remove all directories and files      : make clean"
 
 #
 # Following rules are for building root ca.

@@ -3,7 +3,32 @@ services:
   httpd:
     container_name: "httpd"
     hostname: "origin.dev.local"
-    build: .
+    build:
+      context: "./"
+      dockerfile: "./docker/server/Dockerfile"
     ports:
-      - "80:80"
+      # - "<Host IP><Host Port>:<Container Port>"
+      - "8080:80"
       - "443:443"
+  crl_distribution_point:
+    container_name: "crl_distribution_point"
+    hostname: "root-ca.dev.local"
+    build:
+      context: "./"
+      dockerfile: "./docker/crl_distribution_point/Dockerfile"
+    ports:
+      # - "<Host IP><Host Port>:<Container Port>"
+      - "80:80"
+  ocsp_responder:
+    container_name: "ocsp_responder"
+    hostname: "ocsp-responder.root-ca.dev.local"
+    build:
+      context: "./"
+      dockerfile: "./docker/ocsp_responder/Dockerfile"
+    ports:
+      # - "<Host IP><Host Port>:<Container Port>"
+      - "9080:9080"
+    volumes:
+      # - <Host>:<Container>:rw
+      - ./rootCa:/root/rootCa:ro
+

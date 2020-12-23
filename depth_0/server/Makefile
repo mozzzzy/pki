@@ -1,4 +1,4 @@
-CONFIG=config/server.conf
+CONFIG_REQ=config/server-req.conf
 OPENSSL=openssl
 SERVER_KEY=private/server.key
 SERVER_CSR=server.csr
@@ -31,7 +31,7 @@ $(SERVER_KEY):
 $(SERVER_CSR): $(SERVER_KEY)
 	$(OPENSSL) req \
 		-new \
-		-config $(CONFIG) \
+		-config $(CONFIG_REQ) \
 		-key $(SERVER_KEY) \
 		-out $@
 

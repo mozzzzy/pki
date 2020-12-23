@@ -5,7 +5,7 @@ FROM httpd:2.4
 # html files
 #
 
-COPY files/htdocs/ /usr/local/apache2/htdocs/
+COPY docker/server/files/htdocs/ /usr/local/apache2/htdocs/
 
 #
 # enable tls
@@ -17,7 +17,7 @@ COPY server/private/server.key /usr/local/apache2/conf/server.key
 #
 # cert passphrase (This is not secure. but it's ok because this is demo env.)
 #
-COPY files/pass_input.sh /usr/local/bin/pass_input.sh
+COPY docker/server/files/pass_input.sh /usr/local/bin/pass_input.sh
 RUN chmod 500 /usr/local/bin/pass_input.sh
 
 RUN sed -i \

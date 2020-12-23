@@ -6,7 +6,6 @@ ROOT_CA_KEY=private/root-ca.key
 ROOT_CA_CSR=root-ca.csr
 ROOT_CA_CRT=root-ca.crt
 ROOT_CA_CRL=root-ca.crl
-ROOT_OCSP_CONFIG=config/root-ocsp.conf
 ROOT_OCSP_KEY=private/root-ocsp.key
 ROOT_OCSP_CSR=root-ocsp.csr
 ROOT_OCSP_CRT=root-ocsp.crt

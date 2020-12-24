@@ -2,7 +2,52 @@ version: "3.7"
 services:
   httpd:
     container_name: "httpd"
-    build: .
+    hostname: "origin.dev.local"
+    build:
+      context: "./"
+      dockerfile: "./docker/server/Dockerfile"
     ports:
-      - "80:80"
+      # - "<Host IP><Host Port>:<Container Port>"
       - "443:443"
+  root_crl_distribution_point:
+    container_name: "root_crl_distribution_point"
+    hostname: "root-ca.dev.local"
+    build:
+      context: "./"
+      dockerfile: "./docker/root_crl_distribution_point/Dockerfile"
+    ports:
+      # - "<Host IP><Host Port>:<Container Port>"
+      - "8080:80"
+  root_ocsp_responder:
+    container_name: "root_ocsp_responder"
+    hostname: "ocsp-responder.root-ca.dev.local"
+    build:
+      context: "./"
+      dockerfile: "./docker/root_ocsp_responder/Dockerfile"
+    ports:
+      # - "<Host IP><Host Port>:<Container Port>"
+      - "9080:9080"
+    volumes:
+      # - <Host>:<Container>:rw
+      - ./rootCa:/root/rootCa:ro
+  int_crl_distribution_point:
+    container_name: "int_crl_distribution_point"
+    hostname: "int-ca.dev.local"
+    build:
+      context: "./"
+      dockerfile: "./docker/int_crl_distribution_point/Dockerfile"
+    ports:
+      # - "<Host IP><Host Port>:<Container Port>"
+      - "80:80"
+  int_ocsp_responder:
+    container_name: "int_ocsp_responder"
+    hostname: "ocsp-responder.int-ca.dev.local"
+    build:
+      context: "./"
+      dockerfile: "./docker/int_ocsp_responder/Dockerfile"
+    ports:
+      # - "<Host IP><Host Port>:<Container Port>"
+      - "9081:9081"
+    volumes:
+      # - <Host>:<Container>:rw
+      - ./intCa:/root/intCa:ro

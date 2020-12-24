@@ -1,9 +1,6 @@
 # base image
 FROM centos:7
 
-# Copy Root CA directories
-#COPY rootCa /root/rootCa
-
 # install openssl
 RUN yum install -y openssl
 

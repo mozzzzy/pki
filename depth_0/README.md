@@ -44,7 +44,7 @@ $ curl http://localhost/root-ca.crt -v
 $ curl http://localhost/root-ca.crl -v
 ```
 
-### Get OCSP request
+### Get OCSP response
 ```bash
 $ openssl ocsp -issuer rootCa/root-ca.crt -CAfile rootCa/root-ca.crt -cert rootCa/root-ocsp.crt -url http://127.0.0.1:9080
 ```

@@ -92,7 +92,7 @@ check_root_ca_crt:
 $(ROOT_CA_CRL):
 	$(OPENSSL) ca -gencrl \
 		-config $(CONFIG_ROOT_CA) \
-		-out root-ca.crl
+		-out $@
 
 # Check CRL
 .PHONY: check_root_ca_crl

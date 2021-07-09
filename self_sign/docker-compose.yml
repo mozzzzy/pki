@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  httpd:
+    container_name: "httpd"
+    hostname: "origin.dev.local"
+    build:
+      context: "./"
+      dockerfile: "./docker/server/Dockerfile"
+    ports:
+      # - "<Host IP><Host Port>:<Container Port>"
+      - "8080:80"
+      - "443:443"
